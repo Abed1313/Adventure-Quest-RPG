@@ -25,7 +25,7 @@ namespace AdventureQuestRPG
         public int AtttackPower()
         {
             Random random = new Random();
-            return random.Next(1,50);
+            return random.Next(0,50);
         }
     }
                                     // Player Class //
