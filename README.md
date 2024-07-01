@@ -66,4 +66,4 @@ Announce the outcome of the battle.
 Different console colors are used to differentiate various types of messages, such as turns, attacks, and outcomes, enhancing the gameplay experience.
 
 ## Example Image 
-![Image](../assest/lap6)
+![Image](../../assest/lap6)
