@@ -1,4 +1,5 @@
 using AdventureQuestRPG;
+using System.Threading;
 
 namespace AdventureQuestRPGTests
 {
@@ -9,14 +10,17 @@ namespace AdventureQuestRPGTests
         {
             //Arreng
             Player player = new Player("Abood", 100, "Sword");
-            Dragon dragon = new Dragon("Dragon", 100, "Scales");
+            Random random = new Random();                                  // Random Monster List
+            Monster[] monsters = { new Falcon(), new Dragon(), new Eagle() };
+            int index = random.Next(monsters.Length);
+            Monster monster = monsters[index];
 
             //Act
             BattleSystem battleSystem = new BattleSystem();
-            battleSystem.Attack(player,dragon);
+            BattleSystem.StartBattel(monster, player);
 
             //Assert
-            Assert.True(dragon.Health < 100);
+            Assert.True(monster.Health < 100);
 
         }
         [Fact]
@@ -24,12 +28,15 @@ namespace AdventureQuestRPGTests
         {
             //Arreng
             Player player = new Player("Abood", 100, "Sword");
-            Dragon dragon = new Dragon("Dragon", 100, "Scales");
-            
+            Random random = new Random();                                  // Random Monster List
+            Monster[] monsters = { new Falcon(), new Dragon(), new Eagle() };
+            int index = random.Next(monsters.Length);
+            Monster monster = monsters[index];
+
             //Act
             BattleSystem battleSystem = new BattleSystem();
-            battleSystem.Attack(dragon, player);
-            
+            BattleSystem.StartBattel(monster, player);
+
             //Assert
             Assert.True(player.Health < 100);
         }
@@ -39,14 +46,17 @@ namespace AdventureQuestRPGTests
         {
             //Arreng
             Player player = new Player("Abood", 100, "Sword");
-            Dragon dragon = new Dragon("Dragon", 100, "Scales");
+            Random random = new Random();                                  // Random Monster List
+            Monster[] monsters = { new Falcon(), new Dragon(), new Eagle() };
+            int index = random.Next(monsters.Length);
+            Monster monster = monsters[index];
 
             //Act
             BattleSystem battleSystem = new BattleSystem();
-            battleSystem.Attack(player, dragon);
+            BattleSystem.StartBattel(monster, player);
 
             //Assert
-            Assert.True(player.Health > 0 || dragon.Health >0);
+            Assert.True(player.Health > 0 || monster.Health >0);
         }
 
         
