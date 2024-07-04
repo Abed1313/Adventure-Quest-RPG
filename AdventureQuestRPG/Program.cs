@@ -29,7 +29,9 @@
             {
                 Console.WriteLine(ex);
             }
-            
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Mutch End");
+
             Console.ReadKey();
         }
     }
