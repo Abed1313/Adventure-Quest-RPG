@@ -6,25 +6,30 @@
         {
             try
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Player player = new Player("Abood", 100, "Sword");             //Player
+                bool playAgain = true;
+
+                while (playAgain)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+
+                Player player = new Player("Abood", 100, "Sword");
                 player.DesblayInfo();
-                Console.WriteLine("");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Dragon dragon = new Dragon("Dragon", 100, "Scales");          //Dragon
-                dragon.DesblayInfo();
-                Console.WriteLine("");
+                Console.WriteLine();
 
-                Falcon falcon = new Falcon("Falcon", 100, "Scales");          //Falcon
-
-                BattleSystem battleSystem = new BattleSystem();
-                // battleSystem.StartBattel(dragon, player);
-
-                battleSystem.StartBattel(falcon, player);
-            }catch (Exception ex)
+                Adventure.Game();
+                    Console.WriteLine("Would you play again (Y/N)?");
+                    string response = Console.ReadLine().ToUpper();
+                    if (response != "Y")
+                    {
+                        playAgain = false;
+                    }
+                }
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
+            
             Console.ReadKey();
         }
     }

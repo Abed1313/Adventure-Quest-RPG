@@ -7,35 +7,29 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace AdventureQuestRPG
 {
-    public class Characters
+    public class Characters : IBattleStates
     {
         public string Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public string Defense { get; set; }
 
-        public Characters(string name, int health, string defense)
+        public int GenerateAttackPower()
+        {
+            Random random = new Random();
+            return random.Next(0, 50);
+        }
+    }
+                                    // Player Class //
+    public class Player : Characters 
+    {
+        //Constructor 
+        public Player(string name, int health,  string defense) 
         {
             Name = name;
             Health = health;
             Defense = defense;
-            AttackPower = AtttackPower();
-
-        }
-        public int AtttackPower()
-        {
-            Random random = new Random();
-            return random.Next(0,50);
-        }
-    }
-                                    // Player Class //
-    public class Player : Characters
-    {
-        //Constructor 
-        public Player(string name, int health,  string defense) :
-            base(name, health, defense)
-        {
-            
+            AttackPower = GenerateAttackPower();
         }
         public void DesblayInfo()
         {
@@ -45,35 +39,38 @@ namespace AdventureQuestRPG
                                 // Monster abstract Class //
     public abstract class Monster : Characters
         {
-            public Monster(string name, int health, string defense) :
-                base(name, health, defense)
-            {
-            
-            }
+        protected Monster(string name, int health, string defense)
+        {
+            Name = name;
+            Health = health;
+            Defense = defense;
+            AttackPower = GenerateAttackPower();
         }
+    }
                                      // Dragon Class //
         public class Dragon : Monster
             {
-            //Constructor 
-        public Dragon(string name, int health,  string defense) :
-          base(name, health,  defense)
-        {
+        public Dragon() : base("Dragon", 100, "Scales") { }
 
-        }           
         public void DesblayInfo()
         {
             Console.WriteLine($"Monster Name: {Name} , Health: {Health}  , Defense: {Defense}");
         }
 
     }
-
+                                      // Falcon Class //
     public class Falcon : Monster 
     {
-        public Falcon(string name, int health, string defense) :
-            base(name, health, defense)
+        public Falcon() : base("Falcon", 75, "Feathers") { }
+        public void DesblayInfo()
         {
+            Console.WriteLine($"Monster Name: {Name} , Health: {Health}  , Defense: {Defense}");
+        }
+    }
 
-        } 
+    public class Eagle : Monster          // BossMonster 
+    {
+        public Eagle() : base("Eagle", 150, "Feathers") { }
         public void DesblayInfo()
         {
             Console.WriteLine($"Monster Name: {Name} , Health: {Health}  , Defense: {Defense}");

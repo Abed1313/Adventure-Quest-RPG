@@ -11,7 +11,7 @@ namespace AdventureQuestRPG
 {
     public class BattleSystem 
     {
-        public void StartBattel(Characters enemy, Characters player)
+        public static void StartBattel(Monster enemy, Player player)
         {
             try
             {
@@ -19,7 +19,7 @@ namespace AdventureQuestRPG
                 {
                     // Player's Turn
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("It's the player's turn.");
+                    Console.WriteLine($"It's the {player.Name} turn.");
                     Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Attack(player, enemy);
@@ -36,7 +36,7 @@ namespace AdventureQuestRPG
 
                     // Enemy's Turn
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("It's the enemy's turn.");
+                    Console.WriteLine($"It's the {enemy.Name} turn.");
                     Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Attack(enemy, player);
@@ -74,7 +74,7 @@ namespace AdventureQuestRPG
     //                break;
     //            }
     //        }
-        public void Attack(Characters attacker, Characters target)
+        public static void Attack(dynamic attacker, dynamic target)
         {
             int damig = CalculateDamage(attacker, target);
             target.Health -= damig;
@@ -97,7 +97,7 @@ namespace AdventureQuestRPG
             }
         }
         
-        public int CalculateDamage(Characters attacker, Characters target)
+        public static int CalculateDamage(Characters attacker, Characters target)
         {
             return attacker.AttackPower;
         }
