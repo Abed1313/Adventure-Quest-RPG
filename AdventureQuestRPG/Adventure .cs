@@ -24,9 +24,6 @@ namespace AdventureQuestRPG
         {
             "ChooseLocation", "Attack"
         }; 
-            //Console.ForegroundColor = ConsoleColor.Magenta;
-            //Console.WriteLine($"Adventure Quest RPG Levels \n*Falcon => Level 1 \n*Dragon => Level 2\n*Eagle => Level 3");
-            //Console.WriteLine("");
             abood.DesblayInfo();
             monster.DesblayInfo();
 
@@ -41,7 +38,7 @@ namespace AdventureQuestRPG
                     }
                     Console.WriteLine($"Welcome to {chosenLocation}, Play Started");
                     BattleSystem.StartBattel(monster, abood);
-
+            
                     Console.WriteLine($"ExperiencePoints : {abood.ExperiencePoints}");
 
         }
