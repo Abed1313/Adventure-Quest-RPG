@@ -1,68 +1,59 @@
 # AdventureQuestRPG
 
-## Overview
-AdventureQuestRPG is a simple console-based role-playing game where players engage in battles with various monsters. The game features a player character and different types of monsters, managed by a battle system that handles turn-based combat.
+AdventureQuestRPG is a text-based role-playing game where players control a character named Abood, who battles various monsters and levels up by gaining experience points. The game includes various elements like characters, monsters, battles, items, and different locations for adventures.
 
-## Program Structure
-### Main Program
-The entry point of the game is the Program class, where the game initializes and starts. The Main method performs the following actions:
+## Classes and Structure
+### Program.cs
+The entry point of the game. It contains the Main method, which initializes the game and handles the main game loop.
 
-Creates instances of the player and monsters.
-Displays their information.
-Initiates battles using the BattleSystem class.
-Includes error handling to catch and display exceptions.
+### Characters.cs
+Defines the base Characters class, which includes properties and methods common to all characters in the game, such as Name, Health, AttackPower, Defense, ExperiencePoints, and Level. It also includes methods for checking experience points and leveling up.
 
-## Player and Monster Classes
-### Characters Class:
+### Player.cs
+Inherits from Characters and adds specific properties and methods for the player character, such as OriginalHealth and Inventory. The Abood class is a specific implementation of the player character.
 
-The base class for all characters in the game, including the player and monsters.
-Defines common properties: Name, Health, AttackPower, and Defense.
-Attack power is randomly generated when an instance is created.
+### Monster.cs
+An abstract class that inherits from Characters and serves as a base for all monster types in the game. Specific monsters like Dragon, Falcon, and Eagle inherit from this class.
 
-### Player Class:
+### BattleSystem.cs
+Handles the battle mechanics between the player and monsters. It includes methods for starting a battle and attacking.
 
-Inherits from the Characters class and represents the player.
-Includes a method to display player information.
+### Adventure.cs
+Defines the Game method, which starts a new adventure by selecting a random monster and location. It also manages the flow of the game, including battles and experience point allocation.
 
-### Monster Class:
+### Inventory.cs
+Handles item drops and the player's inventory. It includes methods for dropping items after a battle and applying item effects to the player.
 
-An abstract class inheriting from the Characters class.
-Serves as a base for specific types of monsters.
+### Items.cs
+Defines the base Items class and specific item types like Potions, Armor, and Weapons.
 
-### Dragon Class:
+## Gameplay
+Starting the Game: The game starts with the player character Abood. The player is prompted to choose a location for the adventure.
+Battle: The player engages in a battle with a randomly selected monster. Both the player and the monster take turns attacking each other until one is defeated.
+Experience and Leveling Up: After defeating a monster, the player gains experience points. If the player gains enough experience points, they level up, increasing their stats.
+Item Drops: The player may receive item drops after defeating a monster. These items can enhance the player's health, defense, or attack power for future battles.
+Replay: After a battle, the player is given the option to play again or exit the game.
 
-Inherits from the Monster class and represents a dragon.
-Includes a method to display the dragon's information.
+## Console Output Explanation
+The console output of the AdventureQuestRPG game guides the player through the various stages of gameplay, providing feedback and instructions. Here's a detailed explanation of what the player sees in the console:
 
-### Falcon Class:
-
-Inherits from the Monster class and represents a falcon.
-Includes a method to display the falcon's information.
-Battle System
-The BattleSystem class manages the combat between the player and monsters, featuring the following methods:
-
-### StartBattle Method:
-
-Manages turn-based combat between the player and the enemy.
-Continues until either the player's or the enemy's health drops to zero.
-Handles both the player's and the enemy's turns, displaying appropriate messages for each turn and the outcome of the battle.
-### Attack Method:
-
-Calculates and applies damage from the attacker to the target.
-Updates the target's health and displays the result of the attack.
-### CalculateDamage Method:
-
-Returns the attack power of the attacker, determining the damage dealt.
-Error Handling
-The game includes error handling in the main program and the battle system to catch and display any exceptions that occur during execution.
-
-## Console Output
-The game uses console output to:
-
-Display information about the characters.
-Indicate turns in the battle.
-Show the damage dealt.
-Announce the outcome of the battle.
-Different console colors are used to differentiate various types of messages, such as turns, attacks, and outcomes, enhancing the gameplay experience.
-
-## Example Image [Link](https://github.com/Abed1313/Adventure-Quest-RPG/blob/AdventureQuest-part1/assest/lap6.2.PNG)
+### Game Start
+Welcome Message and Initial Stats: The game starts with a welcome message, introducing the player to the game and displaying the initial stats of the player character, Abood. The stats include Health, Defense, and Experience Points.
+### Location Selection Prompt:
+The player is prompted to choose a location for the adventure from a list of available options (e.g., DeadSea, WadiRumDesert, AjlounForest, Petra, MountNebo).
+Location Selection and Battle Start
+Selected Location and Monster Introduction: After selecting a location, the game confirms the chosen location and introduces the monster that Abood will battle. The monster's stats, including Health and Defense, are displayed.
+Battle Commencement: The battle between Abood and the monster begins, with turns alternating between the player and the monster.
+### Battle Turns
+Player's Turn: The game indicates that it's Abood's turn to attack. Abood's attack power is calculated, and the damage inflicted on the monster is displayed. The monster's updated health is shown.
+Monster's Turn: The game indicates that it's the monster's turn to attack. The monster's attack power is calculated, and the damage inflicted on Abood is displayed. Abood's updated health is shown.
+Alternating Turns: This process continues with turns alternating between Abood and the monster until one of them is defeated.
+### Battle Victory or Defeat
+Victory Announcement: If Abood defeats the monster, the game announces the victory and the monster's defeat. Abood's experience points are updated, and any level-ups are announced.
+Defeat Announcement: If Abood is defeated, the game announces the defeat and the monster's victory.
+### Item Drops and Usage
+Item Drop: After a victory, the game may drop an item (e.g., potions, armor, weapons). The player is prompted to decide whether to use the item in the next level.
+Item Effects: If the player chooses to use the item, the corresponding stat (Health, Defense, or Attack Power) is increased, and the game confirms the effect.
+### Replay or Exit
+Replay Prompt: After a battle, the player is asked whether they want to play again or exit the game.
+Exit Message: If the player chooses to exit, the game displays a closing message encouraging the player to return for a new adventure.
