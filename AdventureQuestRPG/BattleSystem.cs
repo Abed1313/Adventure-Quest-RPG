@@ -11,14 +11,14 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace AdventureQuestRPG
 {
-    public class BattleSystem 
+    public class BattleSystem : Inventory
     {
         public static void StartBattel(Monster enemy, Player player)
         {
             
             try
             {
-                    while (player.Health > 0 && enemy.Health > 0)
+                while (player.Health > 0 && enemy.Health > 0)
                     {
 
                         // Player's Turn
@@ -28,15 +28,15 @@ namespace AdventureQuestRPG
                         Console.ForegroundColor = ConsoleColor.Green;
                         Attack(player, enemy);
                         Console.ResetColor();
-                    
                     if (enemy.Health <= 0)
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine($"Victory! The {enemy.Name} has been defeated.");
                             Console.WriteLine($"The {player.Name} won");
                             Console.ResetColor();
-                        player.CheckExperiencePoints(10);
-                       break;
+                        player.CheckExperiencePoints(10);    //from Characters
+                        DropInventory(player);             //from Inventory
+                        break;
                         }
 
                         // Enemy's Turn
@@ -94,12 +94,6 @@ namespace AdventureQuestRPG
         //}
     }
 }
-
-
-
-
-
-
 
 //    while (player.Health > 0 && enemy.Health > 0)
 //        { 

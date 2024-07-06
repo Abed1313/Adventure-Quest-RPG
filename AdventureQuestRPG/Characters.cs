@@ -17,31 +17,14 @@ namespace AdventureQuestRPG
         public int ExperiencePoints { get; set; }
         public int Level { get; set; }
 
-        //public int GenerateAttackPower()
-        //{
-        //    Random random = new Random();
-        //    return random.Next(20, 50);
-        //}
         public void CheckExperiencePoints( int Ex)
         {
             ExperiencePoints += Ex;
             if(ExperiencePoints >= Level)
             {
                 CheckLevelUp();
+
             }
-            //if (monster is Eagle)
-            //{
-            //    player.ExperiencePoints += 20;
-            //}
-            //else if(monster is Dragon)
-            //{
-            //    player.ExperiencePoints += 15;
-            //}
-            //else if (monster is Falcon)
-            //{
-            //    player.ExperiencePoints += 10;
-            //}
-            //CheckLevelUp(player);
         }
         public void CheckLevelUp()
         {
@@ -76,6 +59,9 @@ namespace AdventureQuestRPG
     public class Player : Characters 
     {
         public int OregenalHealth { get; set; }
+        public Inventory Inventory { get;set; }
+
+
         //Constructor 
         public Player() 
         {
@@ -95,6 +81,7 @@ namespace AdventureQuestRPG
             Defense = 20;
             AttackPower = 30;
             OregenalHealth = 100;
+            Inventory = new Inventory();
         }
     }
                                 // Monster abstract Class //
@@ -145,3 +132,25 @@ namespace AdventureQuestRPG
 
 }
 
+
+//public int GenerateAttackPower()
+//{
+//    Random random = new Random();
+//    return random.Next(20, 50);
+//}
+
+//CheckExperiencePoints
+
+//if (monster is Eagle)
+//{
+//    player.ExperiencePoints += 20;
+//}
+//else if(monster is Dragon)
+//{
+//    player.ExperiencePoints += 15;
+//}
+//else if (monster is Falcon)
+//{
+//    player.ExperiencePoints += 10;
+//}
+//CheckLevelUp(player);
