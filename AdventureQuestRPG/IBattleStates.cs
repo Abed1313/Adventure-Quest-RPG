@@ -11,7 +11,9 @@ namespace AdventureQuestRPG
         public string Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
-        public string Defense { get; set; }
+        public int Defense { get; set; }
+        public int ExperiencePoints { get; set; }
+        public int Level { get; set; }
 
     }
 }
